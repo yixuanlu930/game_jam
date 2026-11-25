@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://main.gd" id="main"]
+[ext_resource type="Script" path="res://game/date_director.gd" id="director"]
+[ext_resource type="Script" path="res://game/player_wallet.gd" id="wallet"]
+[ext_resource type="Resource" path="res://content/catalog.tres" id="catalog"]
+[ext_resource type="PackedScene" path="res://ui/date_header.tscn" id="header"]
+[ext_resource type="PackedScene" path="res://ui/date_stage.tscn" id="stage"]
+[ext_resource type="PackedScene" path="res://ui/player_card.tscn" id="player"]
+[ext_resource type="PackedScene" path="res://ui/dialogue_panel.tscn" id="dialogue"]
+[ext_resource type="PackedScene" path="res://ui/control_hints.tscn" id="hints"]
+[ext_resource type="Theme" path="res://ui/night_theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://ui/shift_effect.tscn" id="effect"]
+[ext_resource type="Resource" path="res://content/drink_menu.tres" id="menu"]
+[ext_resource type="PackedScene" path="res://ui/service_panel.tscn" id="service"]
+
+[node name="ShiftClub" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("main")
+
+[node name="Director" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("director")
+catalog = ExtResource("catalog")
+drink_menu = ExtResource("menu")
+
+[node name="PlayerWallet" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("wallet")
+
+[node name="Canvas" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.0588, 0.0588, 0.0863, 1)
+
+[node name="Margins" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 19
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 17
+
+[node name="Layout" type="VBoxContainer" parent="Margins"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" parent="Margins/Layout" instance=ExtResource("header")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Stage" parent="Margins/Layout" instance=ExtResource("stage")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Console" type="HBoxContainer" parent="Margins/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 228)
+theme_override_constants/separation = 14
+
+[node name="Player" parent="Margins/Layout/Console" instance=ExtResource("player")]
+layout_mode = 2
+
+[node name="Dialogue" parent="Margins/Layout/Console" instance=ExtResource("dialogue")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Service" parent="Margins/Layout/Console" instance=ExtResource("service")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hints" parent="Margins/Layout" instance=ExtResource("hints")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ShiftEffect" parent="." instance=ExtResource("effect")]
+unique_name_in_owner = true
+layout_mode = 1

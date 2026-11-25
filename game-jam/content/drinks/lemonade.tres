@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CafeDrink" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/cafe_drink.gd" id="drink"]
+
+[resource]
+resource_name = "Limonada de menta"
+script = ExtResource("drink")
+display_name = "Limonada de menta"
+description = "Cítrica, con menta fresca."
+price = 18
+icon_kind = 1

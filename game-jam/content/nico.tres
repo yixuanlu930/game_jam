@@ -1,0 +1,168 @@
+[gd_resource type="Resource" script_class="DateProfile" load_steps=33 format=3]
+
+[ext_resource type="Script" path="res://game/date_profile.gd" id="profile"]
+[ext_resource type="Script" path="res://game/date_question.gd" id="question"]
+[ext_resource type="Script" path="res://game/date_answer.gd" id="answer"]
+[ext_resource type="Texture2D" path="res://art/nico.png" id="portrait"]
+[ext_resource type="Texture2D" path="res://art/cafe.png" id="background"]
+[ext_resource type="Script" path="res://game/drink_preference.gd" id="preference"]
+[ext_resource type="Resource" path="res://content/drinks/coffee.tres" id="coffee"]
+[ext_resource type="Resource" path="res://content/drinks/lemonade.tres" id="lemonade"]
+[ext_resource type="Resource" path="res://content/drinks/chocolate.tres" id="chocolate"]
+
+[sub_resource type="Resource" id="Answer_1_1"]
+script = ExtResource("answer")
+text = "Con algo que se pueda bailar."
+score_delta = 1
+reply = "Si bailas tú, me atrevo."
+
+[sub_resource type="Resource" id="Answer_1_2"]
+script = ExtResource("answer")
+text = "Pon una lista y olvídate."
+score_delta = -2
+reply = "¿Y qué hago yo con estas manos?"
+
+[sub_resource type="Resource" id="Answer_1_3"]
+script = ExtResource("answer")
+text = "Con esa cara B, claro."
+score_delta = 2
+reply = "Te guardo sitio junto al altavoz."
+
+[sub_resource type="Resource" id="Answer_1_4"]
+script = ExtResource("answer")
+text = "Con un clásico del café."
+score_delta = 0
+reply = "Aquí siempre piden boleros."
+
+[sub_resource type="Resource" id="Question_1"]
+resource_name = "La cara B"
+script = ExtResource("question")
+prompt = "Los viernes pongo discos aquí. Tengo una cara B que nadie conoce. ¿Con qué abrirías la sesión?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_1_1"), SubResource("Answer_1_2"), SubResource("Answer_1_3"), SubResource("Answer_1_4")])
+
+[sub_resource type="Resource" id="Answer_2_1"]
+script = ExtResource("answer")
+text = "Búscalo en digital."
+score_delta = 0
+reply = "Probé. Suena demasiado limpio."
+
+[sub_resource type="Resource" id="Answer_2_2"]
+script = ExtResource("answer")
+text = "Sí. El salto también es suyo."
+score_delta = 2
+reply = "Él lo cantaba con salto y todo."
+
+[sub_resource type="Resource" id="Answer_2_3"]
+script = ExtResource("answer")
+text = "Yo lo tiraría."
+score_delta = -2
+reply = "Ni hablar. Era su favorito."
+
+[sub_resource type="Resource" id="Answer_2_4"]
+script = ExtResource("answer")
+text = "Guárdalo para ti."
+score_delta = 1
+reply = "Sí, en casa lo pongo los domingos."
+
+[sub_resource type="Resource" id="Question_2"]
+resource_name = "El disco de mi padre"
+script = ExtResource("question")
+waiter_available = true
+prompt = "Tengo un disco de mi padre que siempre salta en el mismo sitio. ¿Lo pondrías?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_2_1"), SubResource("Answer_2_2"), SubResource("Answer_2_3"), SubResource("Answer_2_4")])
+
+[sub_resource type="Resource" id="Answer_3_1"]
+script = ExtResource("answer")
+text = "Te pregunto si estás a gusto."
+score_delta = 1
+reply = "Contigo, ahora mismo, sí."
+
+[sub_resource type="Resource" id="Answer_3_2"]
+script = ExtResource("answer")
+text = "Hablo hasta que se pasa."
+score_delta = 0
+reply = "Yo empiezo a recitar nombres de discos."
+
+[sub_resource type="Resource" id="Answer_3_3"]
+script = ExtResource("answer")
+text = "¿También tengo que hacer de DJ?"
+score_delta = -2
+reply = "Bastaba con sentarnos un rato."
+
+[sub_resource type="Resource" id="Answer_3_4"]
+script = ExtResource("answer")
+text = "Me quedo un rato contigo."
+score_delta = 2
+reply = "Quédate. Así estoy bien."
+
+[sub_resource type="Resource" id="Question_3"]
+resource_name = "El silencio"
+script = ExtResource("question")
+prompt = "Cuando se acaba la música me cuesta hablar. ¿Qué haces tú con un silencio?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_3_1"), SubResource("Answer_3_2"), SubResource("Answer_3_3"), SubResource("Answer_3_4")])
+
+[sub_resource type="Resource" id="Answer_4_1"]
+script = ExtResource("answer")
+text = "Tú eliges y yo te saco a bailar."
+score_delta = 2
+
+[sub_resource type="Resource" id="Answer_4_2"]
+script = ExtResource("answer")
+text = "Me fío del gusto de la barra."
+score_delta = 0
+
+[sub_resource type="Resource" id="Answer_4_3"]
+script = ExtResource("answer")
+text = "Volvamos a la cara B."
+score_delta = 1
+
+[sub_resource type="Resource" id="Answer_4_4"]
+script = ExtResource("answer")
+text = "Que sea corta, por favor."
+score_delta = -2
+
+[sub_resource type="Resource" id="Question_4"]
+resource_name = "La última canción"
+script = ExtResource("question")
+waiter_available = true
+prompt = "Cierran en diez minutos. Me han dejado elegir la última canción. ¿Me ayudas?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_4_1"), SubResource("Answer_4_2"), SubResource("Answer_4_3"), SubResource("Answer_4_4")])
+
+[sub_resource type="Resource" id="Taste_coffee"]
+resource_name = "Café solo"
+script = ExtResource("preference")
+drink = ExtResource("coffee")
+affinity_gain = 0
+reply = "Gracias. Me lo guardo para después, que con café se me acelera hasta el compás."
+
+[sub_resource type="Resource" id="Taste_lemonade"]
+resource_name = "Limonada de menta"
+script = ExtResource("preference")
+drink = ExtResource("lemonade")
+affinity_gain = 2
+reply = "¡Con menta! Es lo que me preparo siempre antes de pinchar. ¿Quieres probarla?"
+
+[sub_resource type="Resource" id="Taste_chocolate"]
+resource_name = "Chocolate caliente"
+script = ExtResource("preference")
+drink = ExtResource("chocolate")
+affinity_gain = 1
+reply = "Uf, este chocolate sabe al de los domingos en casa de mi padre. Gracias."
+
+[resource]
+resource_name = "Nico"
+script = ExtResource("profile")
+display_name = "Nico"
+tagline = "DJ"
+location_name = "Café Medianoche"
+portrait = ExtResource("portrait")
+background = ExtResource("background")
+opening_lines = PackedStringArray()
+questions = Array[ExtResource("question")]([SubResource("Question_1"), SubResource("Question_2"), SubResource("Question_3"), SubResource("Question_4")])
+starting_score = 0
+rejection_threshold = -3
+success_threshold = 4
+drink_preferences = Array[ExtResource("preference")]([SubResource("Taste_coffee"), SubResource("Taste_lemonade"), SubResource("Taste_chocolate")])
+rejected_line = "Creo que hoy llevamos ritmos distintos. Voy a recoger mis discos. Que llegues bien a casa."
+success_line = "El viernes te guardo la primera canción. Ven un poco antes y la escuchamos aquí, los dos."
+neutral_line = "Gracias por hacerme compañía. Si vuelves un viernes, me encontrarás detrás de los platos."

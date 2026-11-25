@@ -1,0 +1,399 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="Script" path="res://ui/date_stage.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://art/cafe.png" id="2_cafe"]
+[ext_resource type="Texture2D" path="res://art/vera.png" id="3_portrait"]
+[ext_resource type="FontFile" path="res://ui/pixel.ttf" id="4_pixel"]
+[ext_resource type="Texture2D" path="res://art/waiter.png" id="5_waiter"]
+[ext_resource type="Font" path="res://ui/mono.tres" id="6_mono"]
+[ext_resource type="Script" path="res://ui/drink_icon.gd" id="7_drink_icon"]
+
+[sub_resource type="Gradient" id="Gradient_shade"]
+offsets = PackedFloat32Array(0, 0.45, 0.75, 1)
+colors = PackedColorArray(0.045, 0.039, 0.071, 0, 0.045, 0.039, 0.071, 0, 0.045, 0.039, 0.071, 0.19, 0.045, 0.039, 0.071, 0.72)
+
+[sub_resource type="GradientTexture2D" id="Texture_shade"]
+gradient = SubResource("Gradient_shade")
+width = 8
+height = 256
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_frame"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.36, 0.46, 0.84)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_chip"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 11.0
+content_margin_bottom = 5.0
+bg_color = Color(0.071, 0.063, 0.106, 0.89)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.68, 0.53, 0.65, 0.54)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_shift"]
+content_margin_left = 15.0
+content_margin_right = 40.0
+bg_color = Color(1, 0.506, 0.667, 1)
+shadow_color = Color(0.11, 0.067, 0.115, 0.72)
+shadow_size = 1
+shadow_offset = Vector2(2, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_shift_hover"]
+content_margin_left = 15.0
+content_margin_right = 40.0
+bg_color = Color(1, 0.66, 0.76, 1)
+shadow_color = Color(0.11, 0.067, 0.115, 0.72)
+shadow_size = 1
+shadow_offset = Vector2(2, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_shift_pressed"]
+content_margin_left = 15.0
+content_margin_right = 40.0
+bg_color = Color(0.90, 0.41, 0.58, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_shift_focus"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.94, 0.94, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="Style_clear"]
+
+[sub_resource type="StyleBoxFlat" id="Style_waiter_hover"]
+bg_color = Color(0.53, 0.88, 0.83, 0.10)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_waiter_label"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
+bg_color = Color(0.059, 0.098, 0.14, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.40, 0.73, 0.71, 1)
+anti_aliasing = false
+
+[node name="DateStage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1184.0
+offset_bottom = 385.0
+clip_contents = true
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("2_cafe")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="WaiterCall" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.755
+anchor_top = 0.12
+anchor_right = 0.865
+anchor_bottom = 0.58
+mouse_default_cursor_shape = 2
+tooltip_text = "Llamar al camarero para pedir una bebida"
+accessibility_name = "Llamar al camarero"
+theme_override_styles/normal = SubResource("Style_clear")
+theme_override_styles/hover = SubResource("Style_waiter_hover")
+theme_override_styles/pressed = SubResource("Style_waiter_hover")
+theme_override_styles/hover_pressed = SubResource("Style_waiter_hover")
+theme_override_styles/focus = SubResource("Style_shift_focus")
+
+[node name="Sprite" type="TextureRect" parent="WaiterCall"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -15.0
+mouse_filter = 2
+self_modulate = Color(0.84, 0.84, 0.94, 1)
+texture_filter = 1
+texture = ExtResource("5_waiter")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Prompt" type="Label" parent="WaiterCall"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.67, 0.98, 0.92, 1)
+theme_override_fonts/font = ExtResource("6_mono")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("Style_waiter_label")
+text = "LLAMAR"
+horizontal_alignment = 1
+
+[node name="Portrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.32
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("3_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WaiterAtTable" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.50
+anchor_right = 0.95
+anchor_bottom = 1.20
+offset_top = 18.0
+offset_bottom = 18.0
+modulate = Color(1, 1, 1, 0)
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("5_waiter")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shade" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 2
+texture = SubResource("Texture_shade")
+expand_mode = 1
+
+[node name="Frame" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_frame")
+
+[node name="ServedDrink" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.43
+anchor_right = 0.43
+anchor_top = 0.74
+anchor_bottom = 0.74
+offset_left = -28.0
+offset_right = 28.0
+offset_top = -28.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_waiter_label")
+
+[node name="ServedDrinkIcon" type="Control" parent="ServedDrink"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("7_drink_icon")
+
+[node name="Location" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 24.0
+offset_top = 20.0
+grow_horizontal = 1
+grow_vertical = 1
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_chip")
+
+[node name="Row" type="HBoxContainer" parent="Location"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Pin" type="Control" parent="Location/Row"]
+custom_minimum_size = Vector2(13, 16)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Outline" type="Polygon2D" parent="Location/Row/Pin"]
+color = Color(1, 0.506, 0.667, 1)
+polygon = PackedVector2Array(4, 1, 9, 1, 12, 4, 12, 8, 7, 15, 6, 15, 1, 8, 1, 4)
+
+[node name="Center" type="Polygon2D" parent="Location/Row/Pin"]
+color = Color(0.12, 0.086, 0.143, 1)
+polygon = PackedVector2Array(5, 4, 8, 4, 9, 5, 9, 7, 8, 8, 5, 8, 4, 7, 4, 5)
+
+[node name="LocationName" type="Label" parent="Location/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.98, 0.947, 0.961, 1)
+theme_override_font_sizes/font_size = 12
+text = "CAFÉ MEDIANOCHE"
+vertical_alignment = 1
+
+[node name="Identity" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 0.60
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -24.0
+offset_bottom = -24.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="DisplayName" type="Label" parent="Identity"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.97, 0.966, 1)
+theme_override_colors/font_shadow_color = Color(0.067, 0.047, 0.09, 0.94)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_pixel")
+theme_override_font_sizes/font_size = 44
+text = "VERA"
+text_overrun_behavior = 3
+
+[node name="Occupation" type="HBoxContainer" parent="Identity"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Accent" type="ColorRect" parent="Identity/Occupation"]
+custom_minimum_size = Vector2(24, 3)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.506, 0.667, 1)
+
+[node name="Tagline" type="Label" parent="Identity/Occupation"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.97, 0.97, 1)
+theme_override_colors/font_shadow_color = Color(0.067, 0.047, 0.09, 0.94)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "Fotógrafa"
+text_overrun_behavior = 3
+
+[node name="ShiftActions" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="Shift" type="Button" parent="ShiftActions"]
+custom_minimum_size = Vector2(134, 43)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15, 0.079, 0.142, 1)
+theme_override_colors/font_hover_color = Color(0.15, 0.079, 0.142, 1)
+theme_override_colors/font_pressed_color = Color(0.15, 0.079, 0.142, 1)
+theme_override_colors/font_focus_color = Color(0.15, 0.079, 0.142, 1)
+theme_override_fonts/font = ExtResource("4_pixel")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("Style_shift")
+theme_override_styles/hover = SubResource("Style_shift_hover")
+theme_override_styles/pressed = SubResource("Style_shift_pressed")
+theme_override_styles/focus = SubResource("Style_shift_focus")
+text = "SHIFT"
+accessibility_description = "Rechazar la cita"
+
+[node name="SkipIcon" type="Control" parent="ShiftActions/Shift"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -7.0
+offset_right = -13.0
+offset_bottom = 7.0
+mouse_filter = 2
+
+[node name="Triangle" type="Polygon2D" parent="ShiftActions/Shift/SkipIcon"]
+color = Color(0.15, 0.079, 0.142, 1)
+polygon = PackedVector2Array(1, 0, 11, 7, 1, 14)
+
+[node name="Bar" type="Polygon2D" parent="ShiftActions/Shift/SkipIcon"]
+color = Color(0.15, 0.079, 0.142, 1)
+polygon = PackedVector2Array(12, 0, 15, 0, 15, 14, 12, 14)
+
+[node name="Hint" type="Label" parent="ShiftActions"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0.067, 0.047, 0.09, 0.94)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 13
+text = "Rechazar cita"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ShiftActions/Shift" to="." method="_on_shift_pressed"]
+[connection signal="pressed" from="WaiterCall" to="." method="_on_waiter_pressed"]

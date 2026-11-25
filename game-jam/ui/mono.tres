@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3]
+
+[resource]
+font_names = PackedStringArray("Consolas", "Menlo", "DejaVu Sans Mono", "Liberation Mono")
+font_weight = 600

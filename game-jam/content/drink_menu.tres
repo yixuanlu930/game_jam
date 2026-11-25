@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DrinkMenu" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/drink_menu.gd" id="menu"]
+[ext_resource type="Script" path="res://game/cafe_drink.gd" id="drink"]
+[ext_resource type="Resource" path="res://content/drinks/coffee.tres" id="coffee"]
+[ext_resource type="Resource" path="res://content/drinks/lemonade.tres" id="lemonade"]
+[ext_resource type="Resource" path="res://content/drinks/chocolate.tres" id="chocolate"]
+
+[resource]
+resource_name = "Carta del Café Medianoche"
+script = ExtResource("menu")
+drinks = Array[ExtResource("drink")]([ExtResource("coffee"), ExtResource("lemonade"), ExtResource("chocolate")])

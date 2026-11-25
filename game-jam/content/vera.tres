@@ -1,0 +1,168 @@
+[gd_resource type="Resource" script_class="DateProfile" load_steps=33 format=3]
+
+[ext_resource type="Script" path="res://game/date_profile.gd" id="profile"]
+[ext_resource type="Script" path="res://game/date_question.gd" id="question"]
+[ext_resource type="Script" path="res://game/date_answer.gd" id="answer"]
+[ext_resource type="Texture2D" path="res://art/vera.png" id="portrait"]
+[ext_resource type="Texture2D" path="res://art/cafe.png" id="background"]
+[ext_resource type="Script" path="res://game/drink_preference.gd" id="preference"]
+[ext_resource type="Resource" path="res://content/drinks/coffee.tres" id="coffee"]
+[ext_resource type="Resource" path="res://content/drinks/lemonade.tres" id="lemonade"]
+[ext_resource type="Resource" path="res://content/drinks/chocolate.tres" id="chocolate"]
+
+[sub_resource type="Resource" id="Answer_1_1"]
+script = ExtResource("answer")
+text = "En el neón que refleja tu taza."
+score_delta = 2
+reply = "No había visto ese reflejo."
+
+[sub_resource type="Resource" id="Answer_1_2"]
+script = ExtResource("answer")
+text = "En ti, si te apetece."
+score_delta = 1
+reply = "Vale. Ven, te enseño a enfocar."
+
+[sub_resource type="Resource" id="Answer_1_3"]
+script = ExtResource("answer")
+text = "La guardaría para mañana."
+score_delta = 0
+reply = "Qué paciencia tienes."
+
+[sub_resource type="Resource" id="Answer_1_4"]
+script = ExtResource("answer")
+text = "Mejor saca el móvil."
+score_delta = -2
+reply = "Con el móvil disparo sin mirar."
+
+[sub_resource type="Resource" id="Question_1"]
+resource_name = "La última foto"
+script = ExtResource("question")
+waiter_available = true
+prompt = "Me queda una foto en el carrete. ¿En qué gastarías la última?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_1_1"), SubResource("Answer_1_2"), SubResource("Answer_1_3"), SubResource("Answer_1_4")])
+
+[sub_resource type="Resource" id="Answer_2_1"]
+script = ExtResource("answer")
+text = "Me quedo aquí, estoy a gusto."
+score_delta = 0
+reply = "Arrimemos las sillas al cristal."
+
+[sub_resource type="Resource" id="Answer_2_2"]
+script = ExtResource("answer")
+text = "Sí. Les pedimos un baile."
+score_delta = 2
+reply = "Bailo fatal. ¡Vamos!"
+
+[sub_resource type="Resource" id="Answer_2_3"]
+script = ExtResource("answer")
+text = "Hazles la foto a escondidas."
+score_delta = -2
+reply = "Prefiero pedirles permiso."
+
+[sub_resource type="Resource" id="Answer_2_4"]
+script = ExtResource("answer")
+text = "Solo si quieren compañía."
+score_delta = 1
+reply = "Les hago una seña desde aquí."
+
+[sub_resource type="Resource" id="Question_2"]
+resource_name = "Bajo el toldo"
+script = ExtResource("question")
+prompt = "Mira, hay dos personas bailando bajo el toldo. ¿Nos acercamos?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_2_1"), SubResource("Answer_2_2"), SubResource("Answer_2_3"), SubResource("Answer_2_4")])
+
+[sub_resource type="Resource" id="Answer_3_1"]
+script = ExtResource("answer")
+text = "Sí. Da rabia pasar inadvertido."
+score_delta = 1
+reply = "Sí. Se me cerró la garganta."
+
+[sub_resource type="Resource" id="Answer_3_2"]
+script = ExtResource("answer")
+text = "Haber elegido otra foto."
+score_delta = -2
+reply = "A mí me sigue gustando."
+
+[sub_resource type="Resource" id="Answer_3_3"]
+script = ExtResource("answer")
+text = "No. ¿Qué tenía esa foto?"
+score_delta = 2
+reply = "Eran las manos de mi madre cosiendo."
+
+[sub_resource type="Resource" id="Answer_3_4"]
+script = ExtResource("answer")
+text = "Nunca he enseñado algo mío."
+score_delta = 0
+reply = "A mí me costó años enseñar la primera."
+
+[sub_resource type="Resource" id="Question_3"]
+resource_name = "La exposición"
+script = ExtResource("question")
+waiter_available = true
+prompt = "En mi última exposición nadie miró mi foto favorita. ¿Te ha pasado algo así?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_3_1"), SubResource("Answer_3_2"), SubResource("Answer_3_3"), SubResource("Answer_3_4")])
+
+[sub_resource type="Resource" id="Answer_4_1"]
+script = ExtResource("answer")
+text = "Pasear sin mirar el reloj."
+score_delta = 2
+
+[sub_resource type="Resource" id="Answer_4_2"]
+script = ExtResource("answer")
+text = "Ya me mandarás la foto."
+score_delta = 0
+
+[sub_resource type="Resource" id="Answer_4_3"]
+script = ExtResource("answer")
+text = "¿Una hora por una foto?"
+score_delta = -2
+
+[sub_resource type="Resource" id="Answer_4_4"]
+script = ExtResource("answer")
+text = "Te invito a otra taza."
+score_delta = 1
+
+[sub_resource type="Resource" id="Question_4"]
+resource_name = "Una hora"
+script = ExtResource("question")
+prompt = "El carrete tardará una hora en revelarse. ¿Qué te apetece hacer mientras?"
+answers = Array[ExtResource("answer")]([SubResource("Answer_4_1"), SubResource("Answer_4_2"), SubResource("Answer_4_3"), SubResource("Answer_4_4")])
+
+[sub_resource type="Resource" id="Taste_coffee"]
+resource_name = "Café solo"
+script = ExtResource("preference")
+drink = ExtResource("coffee")
+affinity_gain = 2
+reply = "¡Solo, justo como me gusta! Me salva cuando paso la noche revelando fotos."
+
+[sub_resource type="Resource" id="Taste_lemonade"]
+resource_name = "Limonada de menta"
+script = ExtResource("preference")
+drink = ExtResource("lemonade")
+affinity_gain = 0
+reply = "Gracias. La menta me recuerda un poco al dentista."
+
+[sub_resource type="Resource" id="Taste_chocolate"]
+resource_name = "Chocolate caliente"
+script = ExtResource("preference")
+drink = ExtResource("chocolate")
+affinity_gain = 1
+reply = "Tengo las manos heladas de sujetar la cámara. Esto me viene de maravilla."
+
+[resource]
+resource_name = "Vera"
+script = ExtResource("profile")
+display_name = "Vera"
+tagline = "Fotógrafa"
+location_name = "Café Medianoche"
+portrait = ExtResource("portrait")
+background = ExtResource("background")
+opening_lines = PackedStringArray()
+questions = Array[ExtResource("question")]([SubResource("Question_1"), SubResource("Question_2"), SubResource("Question_3"), SubResource("Question_4")])
+starting_score = 0
+rejection_threshold = -3
+success_threshold = 4
+drink_preferences = Array[ExtResource("preference")]([SubResource("Taste_coffee"), SubResource("Taste_lemonade"), SubResource("Taste_chocolate")])
+rejected_line = "Voy a guardar la cámara. Me apetece acabar la noche por mi cuenta."
+success_line = "El laboratorio está a dos calles. ¿Vamos por el camino largo? Todavía quiero saber más de ti."
+neutral_line = "Me ha gustado compartir mesa. Si sale bien la foto, la colgaré aquí. Buenas noches."

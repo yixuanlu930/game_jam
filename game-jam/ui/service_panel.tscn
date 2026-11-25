@@ -1,0 +1,296 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://ui/service_panel.gd" id="script"]
+[ext_resource type="Font" path="res://ui/mono.tres" id="mono"]
+[ext_resource type="Script" path="res://ui/drink_icon.gd" id="icon"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.0980, 0.0980, 0.1373, 1)
+border_width_left = 1
+content_margin_left = 18.0
+border_width_top = 1
+content_margin_top = 14.0
+border_width_right = 1
+content_margin_right = 18.0
+border_width_bottom = 1
+content_margin_bottom = 14.0
+border_color = Color(0.2431, 0.2235, 0.2980, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+bg_color = Color(0.1490, 0.1333, 0.1686, 1)
+border_width_left = 1
+content_margin_left = 0.0
+border_width_top = 1
+content_margin_top = 0.0
+border_width_right = 1
+content_margin_right = 0.0
+border_width_bottom = 1
+content_margin_bottom = 0.0
+border_color = Color(0.3961, 0.3216, 0.2667, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+bg_color = Color(0.2196, 0.1725, 0.1961, 1)
+border_width_left = 1
+content_margin_left = 0.0
+border_width_top = 1
+content_margin_top = 0.0
+border_width_right = 1
+content_margin_right = 0.0
+border_width_bottom = 1
+content_margin_bottom = 0.0
+border_color = Color(1.0000, 0.8235, 0.5098, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Disabled"]
+bg_color = Color(0.1255, 0.1216, 0.1569, 1)
+border_width_left = 1
+content_margin_left = 0.0
+border_width_top = 1
+content_margin_top = 0.0
+border_width_right = 1
+content_margin_right = 0.0
+border_width_bottom = 1
+content_margin_bottom = 0.0
+border_color = Color(0.2706, 0.2431, 0.2863, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Focus"]
+draw_center = false
+border_width_left = 2
+content_margin_left = 0.0
+border_width_top = 2
+content_margin_top = 0.0
+border_width_right = 2
+content_margin_right = 0.0
+border_width_bottom = 2
+content_margin_bottom = 0.0
+border_color = Color(1.0000, 0.8235, 0.5098, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Secondary"]
+bg_color = Color(0.1529, 0.1373, 0.1804, 1)
+border_width_left = 1
+content_margin_left = 14.0
+border_width_top = 1
+content_margin_top = 3.0
+border_width_right = 1
+content_margin_right = 14.0
+border_width_bottom = 1
+content_margin_bottom = 3.0
+border_color = Color(0.3412, 0.3137, 0.3725, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ActionHover"]
+bg_color = Color(0.2510, 0.1922, 0.2314, 1)
+border_width_left = 1
+content_margin_left = 14.0
+border_width_top = 1
+content_margin_top = 3.0
+border_width_right = 1
+content_margin_right = 14.0
+border_width_bottom = 1
+content_margin_bottom = 3.0
+border_color = Color(1.0000, 0.8235, 0.5098, 1)
+anti_aliasing = false
+
+[node name="ServicePanel" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 224)
+offset_right = 985.0
+offset_bottom = 228.0
+theme_override_styles/panel = SubResource("Panel")
+script = ExtResource("script")
+
+[node name="Column" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Column"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Bell" type="Control" parent="Column/Header"]
+custom_minimum_size = Vector2(18, 14)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Dome" type="Polygon2D" parent="Column/Header/Bell"]
+color = Color(1.0000, 0.8235, 0.5098, 1)
+polygon = PackedVector2Array(1, 11, 1, 8, 3, 8, 3, 5, 6, 5, 6, 4, 8, 4, 8, 2, 7, 2, 7, 1, 11, 1, 11, 2, 10, 2, 10, 4, 12, 4, 12, 5, 15, 5, 15, 8, 17, 8, 17, 11)
+
+[node name="Rim" type="Polygon2D" parent="Column/Header/Bell"]
+color = Color(1.0000, 0.8235, 0.5098, 1)
+polygon = PackedVector2Array(0, 12, 18, 12, 18, 14, 0, 14)
+
+[node name="Heading" type="Label" parent="Column/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0000, 0.8235, 0.5098, 1)
+text = "CAMARERO"
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="Affinity" type="Label" parent="Column/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5333, 0.8824, 0.8118, 1)
+text = "+2 AFINIDAD"
+unique_name_in_owner = true
+visible = false
+
+[node name="Dismiss" type="Button" parent="Column/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(96, 32)
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("Secondary")
+theme_override_styles/hover = SubResource("ActionHover")
+theme_override_styles/pressed = SubResource("ActionHover")
+theme_override_styles/hover_pressed = SubResource("ActionHover")
+theme_override_styles/focus = SubResource("Focus")
+text = "Ahora no"
+
+[node name="Prompt" type="Label" parent="Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 23
+theme_override_colors/font_color = Color(0.9725, 0.9490, 0.9608, 1)
+text = "¿Qué te pongo para Vera?"
+unique_name_in_owner = true
+text_overrun_behavior = 3
+
+[node name="Scroll" type="ScrollContainer" parent="Column"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="Items" type="GridContainer" parent="Column/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 8
+
+[node name="Reaction" type="VBoxContainer" parent="Column"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="ReplyScroll" type="ScrollContainer" parent="Column/Reaction"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Reply" type="Label" parent="Column/Reaction/ReplyScroll"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 21
+theme_override_colors/font_color = Color(0.9725, 0.9490, 0.9608, 1)
+text = ""
+unique_name_in_owner = true
+size_flags_horizontal = 3
+autowrap_mode = 3
+
+[node name="Continue" type="Button" parent="Column/Reaction"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(0, 40)
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("Secondary")
+theme_override_styles/hover = SubResource("ActionHover")
+theme_override_styles/pressed = SubResource("ActionHover")
+theme_override_styles/hover_pressed = SubResource("ActionHover")
+theme_override_styles/focus = SubResource("Focus")
+text = "Volver a la conversación  ›"
+
+[node name="CardTemplate" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 100)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("Card")
+theme_override_styles/hover = SubResource("Hover")
+theme_override_styles/pressed = SubResource("Hover")
+theme_override_styles/hover_pressed = SubResource("Hover")
+theme_override_styles/focus = SubResource("Focus")
+theme_override_styles/disabled = SubResource("Disabled")
+
+[node name="Inset" type="MarginContainer" parent="CardTemplate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Row" type="HBoxContainer" parent="CardTemplate/Inset"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 9
+
+[node name="Art" type="ColorRect" parent="CardTemplate/Inset/Row"]
+layout_mode = 2
+size_flags_vertical = 4
+custom_minimum_size = Vector2(40, 42)
+mouse_filter = 2
+color = Color(0.2078, 0.1882, 0.2275, 1)
+
+[node name="Icon" type="Control" parent="CardTemplate/Inset/Row/Art"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("icon")
+
+[node name="Details" type="VBoxContainer" parent="CardTemplate/Inset/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="CardTemplate/Inset/Row/Details"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.9725, 0.9490, 0.9608, 1)
+text = "Café solo"
+text_overrun_behavior = 3
+
+[node name="Description" type="Label" parent="CardTemplate/Inset/Row/Details"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.76, 0.72, 0.79, 1)
+text_overrun_behavior = 3
+
+[node name="Price" type="Label" parent="CardTemplate/Inset/Row/Details"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0000, 0.8235, 0.5098, 1)
+text = "12 monedas"
+text_overrun_behavior = 3

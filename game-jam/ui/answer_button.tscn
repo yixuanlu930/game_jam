@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ui/answer_button.gd" id="1_button"]
+
+[sub_resource type="StyleBoxFlat" id="Style_idle"]
+bg_color = Color(0.129412, 0.12549, 0.172549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.282353, 0.262745, 0.333333, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_highlight"]
+bg_color = Color(0.2, 0.145098, 0.207843, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.505882, 0.666667, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_pressed"]
+bg_color = Color(0.278431, 0.156863, 0.235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.690196, 0.776471, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Style_keycap"]
+bg_color = Color(0.211765, 0.145098, 0.203922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.427451, 0.270588, 0.352941, 1)
+anti_aliasing = false
+
+[node name="AnswerButton" type="Button"]
+custom_minimum_size = Vector2(0, 50)
+offset_right = 380.0
+offset_bottom = 50.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("Style_idle")
+theme_override_styles/hover = SubResource("Style_highlight")
+theme_override_styles/focus = SubResource("Style_highlight")
+theme_override_styles/pressed = SubResource("Style_pressed")
+theme_override_styles/hover_pressed = SubResource("Style_pressed")
+accessibility_name = "1. Me quedaría un poco más."
+script = ExtResource("1_button")
+
+[node name="Inset" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 6
+
+[node name="Row" type="HBoxContainer" parent="Inset"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Keycap" type="PanelContainer" parent="Inset/Row"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_keycap")
+
+[node name="Number" type="Label" parent="Inset/Row/Keycap"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.505882, 0.666667, 1)
+theme_override_font_sizes/font_size = 15
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Caption" type="Label" parent="Inset/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.960784, 0.933333, 0.952941, 1)
+theme_override_font_sizes/font_size = 18
+text = "Me quedaría un poco más."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Chevron" type="Label" parent="Inset/Row"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.660784, 0.592157, 0.658824, 1)
+theme_override_font_sizes/font_size = 22
+text = "›"
+vertical_alignment = 1
+
+[connection signal="minimum_size_changed" from="Inset" to="." method="update_minimum_size"]

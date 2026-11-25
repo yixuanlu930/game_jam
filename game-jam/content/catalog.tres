@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DateCatalog" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://game/date_catalog.gd" id="catalog"]
+[ext_resource type="Script" path="res://game/date_profile.gd" id="profile"]
+[ext_resource type="Resource" path="res://content/vera.tres" id="vera"]
+[ext_resource type="Resource" path="res://content/nico.tres" id="nico"]
+
+[resource]
+script = ExtResource("catalog")
+encounters = Array[ExtResource("profile")]([ExtResource("vera"), ExtResource("nico")])

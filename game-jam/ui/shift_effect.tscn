@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/shift_effect.gd" id="effect"]
+[ext_resource type="AudioStream" path="res://audio/shift.wav" id="sound"]
+
+[node name="ShiftEffect" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+script = ExtResource("effect")
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("sound")

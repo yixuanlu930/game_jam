@@ -1,0 +1,151 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ui/date_header.gd" id="header"]
+[ext_resource type="Script" path="res://ui/pixel_icon.gd" id="icon"]
+[ext_resource type="Script" path="res://ui/affinity_meter.gd" id="meter"]
+[ext_resource type="Font" path="res://ui/pixel.ttf" id="pixel"]
+[ext_resource type="Font" path="res://ui/mono.tres" id="mono"]
+
+[node name="DateHeader" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
+theme_override_constants/separation = 16
+script = ExtResource("header")
+
+[node name="Emblem" type="Control" parent="."]
+custom_minimum_size = Vector2(55, 48)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("icon")
+
+[node name="Brand" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -2
+alignment = 1
+
+[node name="Title" type="HBoxContainer" parent="Brand"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Shift" type="Label" parent="Brand/Title"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("pixel")
+theme_override_font_sizes/font_size = 41
+text = "SHIFT"
+
+[node name="Club" type="Label" parent="Brand/Title"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("pixel")
+theme_override_font_sizes/font_size = 41
+theme_override_colors/font_color = Color(1, 0.506, 0.667, 1)
+text = "CLUB"
+
+[node name="Subtitle" type="Label" parent="Brand"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.695, 0.66, 0.746, 1)
+text = "SIMULADOR DE CITAS"
+
+[node name="Space" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Affinity" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Affinity"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_colors/font_color = Color(0.73, 0.69, 0.77, 1)
+theme_override_font_sizes/font_size = 13
+text = "AFINIDAD"
+
+[node name="Readout" type="HBoxContainer" parent="Affinity"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Meter" type="Control" parent="Affinity/Readout"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(101, 16)
+mouse_filter = 2
+script = ExtResource("meter")
+
+[node name="Score" type="Label" parent="Affinity/Readout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 0.506, 0.667, 1)
+text = "+0"
+
+[node name="Divider" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(1, 32)
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.26, 0.24, 0.31, 1)
+
+[node name="Encounter" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Encounter"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_colors/font_color = Color(0.73, 0.69, 0.77, 1)
+theme_override_font_sizes/font_size = 13
+text = "CITA"
+
+[node name="Counter" type="Label" parent="Encounter"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 19
+text = "01 / 02"
+
+[node name="CoinDivider" type="ColorRect" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(1, 32)
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.26, 0.24, 0.31, 1)
+
+[node name="Wallet" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Wallet"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_colors/font_color = Color(0.73, 0.69, 0.77, 1)
+theme_override_font_sizes/font_size = 13
+text = "MONEDAS"
+
+[node name="Readout" type="HBoxContainer" parent="Wallet"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Coin" type="Control" parent="Wallet/Readout"]
+layout_mode = 2
+custom_minimum_size = Vector2(20, 20)
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("icon")
+icon = 3
+tint = Color(1, 0.789, 0.369, 1)
+
+[node name="CoinCount" type="Label" parent="Wallet/Readout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("mono")
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(1, 0.837, 0.494, 1)
+text = "100"
